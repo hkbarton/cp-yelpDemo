@@ -18,9 +18,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     RestaurantsViewController *rvc = [[RestaurantsViewController alloc] init];
     UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:rvc];
+    nvc.navigationBar.barTintColor = [UIColor colorWithRed:184.0f/255.0f green:11.0f/255.0f blue:4.0f/255.0f alpha:1.0f];
     self.window.rootViewController = nvc;
     [self.window makeKeyAndVisible];
     return YES;

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0715BED41A8A823800E87D97 /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0715BED21A8A823800E87D97 /* FilterViewController.m */; };
+		0715BED51A8A823800E87D97 /* FilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0715BED31A8A823800E87D97 /* FilterViewController.xib */; };
 		071F41321A89DE9B000A06E3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 071F41311A89DE9B000A06E3 /* main.m */; };
 		071F41351A89DE9B000A06E3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 071F41341A89DE9B000A06E3 /* AppDelegate.m */; };
 		071F413D1A89DE9B000A06E3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 071F413C1A89DE9B000A06E3 /* Images.xcassets */; };
@@ -29,6 +31,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0715BED11A8A823800E87D97 /* FilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterViewController.h; sourceTree = "<group>"; };
+		0715BED21A8A823800E87D97 /* FilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterViewController.m; sourceTree = "<group>"; };
+		0715BED31A8A823800E87D97 /* FilterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterViewController.xib; sourceTree = "<group>"; };
 		071F412C1A89DE9B000A06E3 /* yelp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yelp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		071F41301A89DE9B000A06E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		071F41311A89DE9B000A06E3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -135,6 +140,9 @@
 				071F41551A89DF0A000A06E3 /* RestaurantsViewController.h */,
 				071F41561A89DF0A000A06E3 /* RestaurantsViewController.m */,
 				071F41571A89DF0A000A06E3 /* RestaurantsViewController.xib */,
+				0715BED11A8A823800E87D97 /* FilterViewController.h */,
+				0715BED21A8A823800E87D97 /* FilterViewController.m */,
+				0715BED31A8A823800E87D97 /* FilterViewController.xib */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -256,6 +264,7 @@
 			files = (
 				071F41401A89DE9B000A06E3 /* LaunchScreen.xib in Resources */,
 				071F413D1A89DE9B000A06E3 /* Images.xcassets in Resources */,
+				0715BED51A8A823800E87D97 /* FilterViewController.xib in Resources */,
 				071F41591A89DF0A000A06E3 /* RestaurantsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -309,6 +318,7 @@
 			files = (
 				071F41581A89DF0A000A06E3 /* RestaurantsViewController.m in Sources */,
 				071F41351A89DE9B000A06E3 /* AppDelegate.m in Sources */,
+				0715BED41A8A823800E87D97 /* FilterViewController.m in Sources */,
 				071F41321A89DE9B000A06E3 /* main.m in Sources */,
 				071F415F1A89DF84000A06E3 /* YelpService.m in Sources */,
 			);

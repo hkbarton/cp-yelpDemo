@@ -9,11 +9,11 @@
 #import "RestaurantsViewController.h"
 #import "YelpService.h"
 
-@interface RestaurantsViewController ()
+@interface RestaurantsViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
 @property (nonatomic, strong) UISearchBar *searchBar;
-@property (nonatomic, strong) UIButton *buttonFilter;
-@property (nonatomic, strong) UIButton *buttonMap;
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -23,26 +23,18 @@
     [super viewDidLoad];
     // setup navigation bar
     self.searchBar = [[UISearchBar alloc] init];
+    self.searchBar.delegate = self;
     self.navigationItem.titleView = self.searchBar;
     
-    self.buttonFilter = [UIButton buttonWithType:UIButtonTypeSystem];
-    self.buttonFilter.frame = CGRectMake(0, 0, 60, 0);
-    [self.buttonFilter setTitle:@"Filter" forState:UIControlStateNormal];
-    [self.buttonFilter setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.buttonFilter addTarget:self action:@selector(onFilterButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.buttonFilter];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStylePlain target:self action:@selector(onFilterButtonClicked:)];
+    [self.navigationItem.leftBarButtonItem setTintColor:[UIColor whiteColor]];
     
-    self.buttonMap = [UIButton buttonWithType:UIButtonTypeSystem];
-    self.buttonMap.frame = CGRectMake(0, 0, 60, 0);
-    [self.buttonMap setTitle:@"Map" forState:UIControlStateNormal];
-    [self.buttonMap setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.buttonMap addTarget:self action:@selector(onMapButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.buttonMap];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Map" style:UIBarButtonItemStylePlain target:self action:@selector(onMapButtonClicked:)];
+    [self.navigationItem.rightBarButtonItem setTintColor:[UIColor whiteColor]];
     
-    // Do any additional setup after loading the view from its nib.
-    [[YelpService defaultService] searchWithTerm:@"Thai" withCallback:^(NSArray *data, NSError *err) {
-        //
-    }];
+    // init table view
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -56,6 +48,33 @@
 
 - (void)onMapButtonClicked:(id)sender {
     
+}
+
+#pragma mark - Util
+
+- (void)refreshData {
+    
+}
+
+- (void)refreshView {
+    
+}
+
+#pragma mark - Search Bar
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    // do search
+    [searchBar resignFirstResponder];
+}
+
+#pragma mark - Table View
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return nil;
 }
 
 /*

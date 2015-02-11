@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "BDBOAuth1RequestOperationManager.h"
+#import "SearchParameter.h"
 
 @interface YelpService : BDBOAuth1RequestOperationManager
 
-- (void) searchWithTerm:(NSString *) term withCallback:(void(^)(NSArray *data, NSError *err)) callback;
+- (void) searchWithTerm:(SearchParameter *) param withCallback:(void(^)(NSArray *data, NSError *err)) callback;
 
 + (id)defaultService;
 

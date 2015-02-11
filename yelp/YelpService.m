@@ -7,6 +7,7 @@
 //
 
 #import "YelpService.h"
+#import "Business.h"
 
 NSString *const CONSUMER_KEY = @"IV7gz2IYcmz5VHCMZ2rggQ";
 NSString *const CONSUMER_SECRET = @"2zRW7oCrWRssYWQsswIbWXDV63g";
@@ -27,12 +28,16 @@ static YelpService *_defaultService = nil;
     return self;
 }
 
-- (void) searchWithTerm:(NSString *) term withCallback:(void(^)(NSArray *data, NSError *err)) callback {
-    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:term, @"term" , @"San Francisco", @"location", nil];
+- (void) searchWithTerm:(SearchParameter *) param withCallback:(void(^)(NSArray *data, NSError *err)) callback {
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    // TODO
+    
     [self GET:@"search" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        //
+        NSArray *businessDictinary = responseObject[@"businesses"];
+        NSArray *result = [Business businessesWithDictionaries:businessDictinary];
+        callback(result, nil);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        //
+        callback(nil, error);
     }];
 }
 

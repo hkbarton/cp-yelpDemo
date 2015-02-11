@@ -17,6 +17,12 @@
 		071F41581A89DF0A000A06E3 /* RestaurantsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 071F41561A89DF0A000A06E3 /* RestaurantsViewController.m */; };
 		071F41591A89DF0A000A06E3 /* RestaurantsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 071F41571A89DF0A000A06E3 /* RestaurantsViewController.xib */; };
 		071F415F1A89DF84000A06E3 /* YelpService.m in Sources */ = {isa = PBXBuildFile; fileRef = 071F415E1A89DF84000A06E3 /* YelpService.m */; };
+		07AB57B21A8B174E00E1E74E /* RestaurantTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 07AB57B01A8B174E00E1E74E /* RestaurantTableViewCell.m */; };
+		07AB57B31A8B174E00E1E74E /* RestaurantTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07AB57B11A8B174E00E1E74E /* RestaurantTableViewCell.xib */; };
+		07AB57B71A8B177500E1E74E /* FilterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 07AB57B51A8B177500E1E74E /* FilterTableViewCell.m */; };
+		07AB57B81A8B177500E1E74E /* FilterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07AB57B61A8B177500E1E74E /* FilterTableViewCell.xib */; };
+		07AB57BC1A8B179400E1E74E /* Business.m in Sources */ = {isa = PBXBuildFile; fileRef = 07AB57BB1A8B179400E1E74E /* Business.m */; };
+		07AB57BF1A8B2D5000E1E74E /* SearchParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 07AB57BE1A8B2D5000E1E74E /* SearchParameter.m */; };
 		43CEE3BA40E2E5445065EB88 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E23086544908F1F39692F2B1 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +55,16 @@
 		071F41571A89DF0A000A06E3 /* RestaurantsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RestaurantsViewController.xib; sourceTree = "<group>"; };
 		071F415D1A89DF84000A06E3 /* YelpService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpService.h; sourceTree = "<group>"; };
 		071F415E1A89DF84000A06E3 /* YelpService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpService.m; sourceTree = "<group>"; };
+		07AB57AF1A8B174E00E1E74E /* RestaurantTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantTableViewCell.h; sourceTree = "<group>"; };
+		07AB57B01A8B174E00E1E74E /* RestaurantTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantTableViewCell.m; sourceTree = "<group>"; };
+		07AB57B11A8B174E00E1E74E /* RestaurantTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RestaurantTableViewCell.xib; sourceTree = "<group>"; };
+		07AB57B41A8B177500E1E74E /* FilterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterTableViewCell.h; sourceTree = "<group>"; };
+		07AB57B51A8B177500E1E74E /* FilterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterTableViewCell.m; sourceTree = "<group>"; };
+		07AB57B61A8B177500E1E74E /* FilterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterTableViewCell.xib; sourceTree = "<group>"; };
+		07AB57BA1A8B179400E1E74E /* Business.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Business.h; sourceTree = "<group>"; };
+		07AB57BB1A8B179400E1E74E /* Business.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Business.m; sourceTree = "<group>"; };
+		07AB57BD1A8B2D5000E1E74E /* SearchParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchParameter.h; sourceTree = "<group>"; };
+		07AB57BE1A8B2D5000E1E74E /* SearchParameter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchParameter.m; sourceTree = "<group>"; };
 		7B07EBAD65B4DF6C1FBFBE7F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C80A0F9E5B0CB0EF0DDD0E0C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		E23086544908F1F39692F2B1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,6 +112,7 @@
 		071F412E1A89DE9B000A06E3 /* yelp */ = {
 			isa = PBXGroup;
 			children = (
+				07AB57B91A8B178200E1E74E /* Model */,
 				071F415C1A89DF30000A06E3 /* API */,
 				071F415B1A89DF25000A06E3 /* View */,
 				071F415A1A89DF13000A06E3 /* ViewController */,
@@ -150,6 +167,12 @@
 		071F415B1A89DF25000A06E3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				07AB57AF1A8B174E00E1E74E /* RestaurantTableViewCell.h */,
+				07AB57B01A8B174E00E1E74E /* RestaurantTableViewCell.m */,
+				07AB57B11A8B174E00E1E74E /* RestaurantTableViewCell.xib */,
+				07AB57B41A8B177500E1E74E /* FilterTableViewCell.h */,
+				07AB57B51A8B177500E1E74E /* FilterTableViewCell.m */,
+				07AB57B61A8B177500E1E74E /* FilterTableViewCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -161,6 +184,17 @@
 				071F415E1A89DF84000A06E3 /* YelpService.m */,
 			);
 			name = API;
+			sourceTree = "<group>";
+		};
+		07AB57B91A8B178200E1E74E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				07AB57BA1A8B179400E1E74E /* Business.h */,
+				07AB57BB1A8B179400E1E74E /* Business.m */,
+				07AB57BD1A8B2D5000E1E74E /* SearchParameter.h */,
+				07AB57BE1A8B2D5000E1E74E /* SearchParameter.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		293C01C8A39C3402D0EC3466 /* Frameworks */ = {
@@ -263,7 +297,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				071F41401A89DE9B000A06E3 /* LaunchScreen.xib in Resources */,
+				07AB57B81A8B177500E1E74E /* FilterTableViewCell.xib in Resources */,
 				071F413D1A89DE9B000A06E3 /* Images.xcassets in Resources */,
+				07AB57B31A8B174E00E1E74E /* RestaurantTableViewCell.xib in Resources */,
 				0715BED51A8A823800E87D97 /* FilterViewController.xib in Resources */,
 				071F41591A89DF0A000A06E3 /* RestaurantsViewController.xib in Resources */,
 			);
@@ -316,9 +352,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07AB57BF1A8B2D5000E1E74E /* SearchParameter.m in Sources */,
 				071F41581A89DF0A000A06E3 /* RestaurantsViewController.m in Sources */,
+				07AB57BC1A8B179400E1E74E /* Business.m in Sources */,
 				071F41351A89DE9B000A06E3 /* AppDelegate.m in Sources */,
+				07AB57B21A8B174E00E1E74E /* RestaurantTableViewCell.m in Sources */,
 				0715BED41A8A823800E87D97 /* FilterViewController.m in Sources */,
+				07AB57B71A8B177500E1E74E /* FilterTableViewCell.m in Sources */,
 				071F41321A89DE9B000A06E3 /* main.m in Sources */,
 				071F415F1A89DF84000A06E3 /* YelpService.m in Sources */,
 			);

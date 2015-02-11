@@ -10,13 +10,18 @@
 
 @implementation Business
 
+const float MilesPerMeter = 0.000621371;
+
 - (id)initWithDictionary:(NSDictionary *)dictionary {
     if (self = [super init]) {
         self.imageUrl = dictionary[@"image_url"];
         self.name = dictionary[@"name"];
         self.ratingImageUrl = dictionary[@"rating_img_url"];
         self.numOfReviews = [dictionary[@"review_count"] integerValue];
-        self.street = [dictionary valueForKeyPath:@"location.address"][0];
+        NSArray *streetList = [dictionary valueForKeyPath:@"location.address"];
+        if (streetList.count > 0) {
+            self.street = streetList[0];
+        }
         self.neighborhoods = [dictionary valueForKeyPath:@"location.neighborhoods"][0];
         self.city = [dictionary valueForKeyPath:@"location.city"];
         self.address = [NSString stringWithFormat:@"%@, %@", self.street, self.neighborhoods];
@@ -27,8 +32,8 @@
         [categories enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             [categoryNames addObject:obj[0]];
         }];
-        self.categories = [[categoryNames copy] componentsJoinedByString:@", "];
-        //self.distance = dictionary[@"distance"]
+        self.categories = [categoryNames componentsJoinedByString:@", "];
+        self.distance = [dictionary[@"distance"] integerValue] * MilesPerMeter;
         self.phone = dictionary[@"display_phone"];
     }
     return self;

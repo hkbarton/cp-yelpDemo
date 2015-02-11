@@ -12,7 +12,7 @@
 
 @interface YelpService : BDBOAuth1RequestOperationManager
 
-- (void) searchWithTerm:(SearchParameter *) param withCallback:(void(^)(NSArray *data, NSError *err)) callback;
+- (void) searchBusiness:(SearchParameter *) param withCallback:(void(^)(NSArray *data, NSError *err)) callback;
 
 + (id)defaultService;
 

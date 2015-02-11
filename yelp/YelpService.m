@@ -28,11 +28,8 @@ static YelpService *_defaultService = nil;
     return self;
 }
 
-- (void) searchWithTerm:(SearchParameter *) param withCallback:(void(^)(NSArray *data, NSError *err)) callback {
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    // TODO
-    
-    [self GET:@"search" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+- (void) searchBusiness:(SearchParameter *) param withCallback:(void(^)(NSArray *data, NSError *err)) callback {
+    [self GET:@"search" parameters:[param getAPISearchParameter] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSArray *businessDictinary = responseObject[@"businesses"];
         NSArray *result = [Business businessesWithDictionaries:businessDictinary];
         callback(result, nil);

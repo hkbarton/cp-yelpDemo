@@ -15,9 +15,15 @@
 @property (nonatomic, assign) NSInteger pageCount;
 @property (nonatomic, assign) NSInteger startIndex;
 @property (nonatomic, assign) NSInteger sortBy;
-@property (nonatomic, strong) NSString *categoryFilter;
+@property (nonatomic, strong) NSMutableArray *categoryFilters;
 @property (nonatomic, assign) CGFloat radiusFilter;
+@property (nonatomic, assign) CGFloat latitude;
+@property (nonatomic, assign) CGFloat longitude;
 @property (nonatomic, assign) BOOL onlySearchDeal;
+
+- (NSDictionary *)getAPISearchParameter;
+- (void)resetPagingParameter;
+- (void)nextPage;
 
 + (SearchParameter *) defaultParameter;
 

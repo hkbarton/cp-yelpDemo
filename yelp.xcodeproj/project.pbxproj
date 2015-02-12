@@ -17,6 +17,7 @@
 		071F41581A89DF0A000A06E3 /* RestaurantsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 071F41561A89DF0A000A06E3 /* RestaurantsViewController.m */; };
 		071F41591A89DF0A000A06E3 /* RestaurantsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 071F41571A89DF0A000A06E3 /* RestaurantsViewController.xib */; };
 		071F415F1A89DF84000A06E3 /* YelpService.m in Sources */ = {isa = PBXBuildFile; fileRef = 071F415E1A89DF84000A06E3 /* YelpService.m */; };
+		07271CDE1A8D1699006545D3 /* FilterItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 07271CDD1A8D1699006545D3 /* FilterItem.m */; };
 		07AB57B21A8B174E00E1E74E /* RestaurantTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 07AB57B01A8B174E00E1E74E /* RestaurantTableViewCell.m */; };
 		07AB57B31A8B174E00E1E74E /* RestaurantTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07AB57B11A8B174E00E1E74E /* RestaurantTableViewCell.xib */; };
 		07AB57B71A8B177500E1E74E /* FilterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 07AB57B51A8B177500E1E74E /* FilterTableViewCell.m */; };
@@ -55,6 +56,8 @@
 		071F41571A89DF0A000A06E3 /* RestaurantsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RestaurantsViewController.xib; sourceTree = "<group>"; };
 		071F415D1A89DF84000A06E3 /* YelpService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpService.h; sourceTree = "<group>"; };
 		071F415E1A89DF84000A06E3 /* YelpService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpService.m; sourceTree = "<group>"; };
+		07271CDC1A8D1699006545D3 /* FilterItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterItem.h; sourceTree = "<group>"; };
+		07271CDD1A8D1699006545D3 /* FilterItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterItem.m; sourceTree = "<group>"; };
 		07AB57AF1A8B174E00E1E74E /* RestaurantTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantTableViewCell.h; sourceTree = "<group>"; };
 		07AB57B01A8B174E00E1E74E /* RestaurantTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantTableViewCell.m; sourceTree = "<group>"; };
 		07AB57B11A8B174E00E1E74E /* RestaurantTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RestaurantTableViewCell.xib; sourceTree = "<group>"; };
@@ -193,6 +196,8 @@
 				07AB57BB1A8B179400E1E74E /* Business.m */,
 				07AB57BD1A8B2D5000E1E74E /* SearchParameter.h */,
 				07AB57BE1A8B2D5000E1E74E /* SearchParameter.m */,
+				07271CDC1A8D1699006545D3 /* FilterItem.h */,
+				07271CDD1A8D1699006545D3 /* FilterItem.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -354,6 +359,7 @@
 			files = (
 				07AB57BF1A8B2D5000E1E74E /* SearchParameter.m in Sources */,
 				071F41581A89DF0A000A06E3 /* RestaurantsViewController.m in Sources */,
+				07271CDE1A8D1699006545D3 /* FilterItem.m in Sources */,
 				07AB57BC1A8B179400E1E74E /* Business.m in Sources */,
 				071F41351A89DE9B000A06E3 /* AppDelegate.m in Sources */,
 				07AB57B21A8B174E00E1E74E /* RestaurantTableViewCell.m in Sources */,

@@ -8,7 +8,9 @@
 
 #import "FilterViewController.h"
 
-@interface FilterViewController ()
+@interface FilterViewController () <UITableViewDataSource, UITableViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -21,6 +23,9 @@
     [self.navigationItem.leftBarButtonItem setTintColor:[UIColor whiteColor]];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Search" style:UIBarButtonItemStylePlain target:self action:@selector(onSearchButtonClicked:)];
     [self.navigationItem.rightBarButtonItem setTintColor:[UIColor whiteColor]];
+    
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,6 +39,24 @@
 - (void)onSearchButtonClicked:(id)sender {
     [self.delegate filterViewController:self didChangeFileters:self.filters];
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark Table View
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 0;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return nil;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
 }
 
 @end

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "FilterItem.h"
 
 @interface SearchParameter : NSObject
 
@@ -25,10 +26,14 @@
 - (void)resetPagingParameter;
 - (void)nextPage;
 
+- (NSArray *)getAllFiltersByCurrentValue;
+- (void)updateFilterValue: (NSArray *)filters;
+
 + (SearchParameter *) defaultParameter;
 
-+ (NSDictionary *)getAllSortByTypes;
++ (NSArray *)getAllDealFilters;
++ (NSArray *)getAllSortByFilters;
 + (NSArray *)getAllCategoryFilters;
-+ (NSDictionary *)getAllRadiusFilter;
++ (NSArray *)getAllRadiusFilters;
 
 @end

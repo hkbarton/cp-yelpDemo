@@ -13,17 +13,48 @@
 const float MeterPerMile = 1609.34f;
 const int DefaultPageCount = 20;
 
-+ (NSDictionary *)getAllSortByTypes {
-    return [NSDictionary dictionaryWithObjectsAndKeys:0, @"Best Match", 1, @"Distance", 2, @"Rating", nil];
+static NSArray *dealFilters, *sortByFilters, *categoryFilters, *radiusFilters;
+
++ (NSArray *)getAllDealFilters {
+    if (dealFilters == nil) {
+        dealFilters = [[NSArray alloc] initWithObjects:
+                       [[FilterItem alloc] initWith:@"With Deal Only" value:@(YES)],
+                       nil];
+    }
+    return dealFilters;
+}
+
++ (NSArray *)getAllRadiusFilters {
+    if (radiusFilters == nil) {
+        radiusFilters = [[NSArray alloc] initWithObjects:
+                           [[FilterItem alloc] initWith:@"Best Match" value:@(0.0f)],
+                           [[FilterItem alloc] initWith:@"0.3 miles" value:@(0.3f)],
+                           [[FilterItem alloc] initWith:@"1 mile" value:@(1.0f)],
+                           [[FilterItem alloc] initWith:@"5 miles" value:@(5.0f)],
+                           [[FilterItem alloc] initWith:@"20 miles" value:@(20.0f)],
+                           nil];
+    }
+    return radiusFilters;
+}
+
++ (NSArray *)getAllSortByFilters {
+    if (sortByFilters == nil) {
+        sortByFilters = [[NSArray alloc] initWithObjects:
+                         [[FilterItem alloc] initWith:@"Best Match" value:@(0)],
+                         [[FilterItem alloc] initWith:@"Distance" value:@(1)],
+                         [[FilterItem alloc] initWith:@"Rating" value:@(2)],
+                       nil];
+    }
+    return sortByFilters;
 }
 
 + (NSArray *)getAllCategoryFilters {
-    // TODO add categories
-    return [NSArray arrayWithObjects:@"", nil];
-}
-
-+ (NSDictionary *)getAllRadiusFilter {
-    return [NSDictionary dictionaryWithObjectsAndKeys:@(0.0f), @"Best Match", @(0.3f), @"0.3 miles", @(1.0f), @"1 miles", @(5.0f), @"5 miles", @(20.0f), @"20 miles", nil];
+    if (categoryFilters == nil) {
+        categoryFilters = [[NSArray alloc] initWithObjects:
+                         [[FilterItem alloc] initWith:@"" value:@""],
+                         nil];
+    }
+    return categoryFilters;
 }
 
 + (SearchParameter *) defaultParameter {
@@ -66,6 +97,32 @@ const int DefaultPageCount = 20;
 
 - (void)nextPage {
     self.startIndex += self.pageCount;
+}
+
+- (NSArray *)selectFilterItemsBy: (NSArray *)filterItems byValues:(NSArray *)values {
+    for(int i=0; i<filterItems.count; i++) {
+        FilterItem *item = filterItems[i];
+        item.isSelected = NO;
+        for (int j=0; j<values.count; j++) {
+            if ([[item.value stringValue] isEqualToString:[values[j] stringValue]]) {
+                item.isSelected = YES;
+            }
+        }
+    }
+    return filterItems;
+}
+
+- (NSArray *)getAllFiltersByCurrentValue {
+    return [NSArray arrayWithObjects:
+            [self selectFilterItemsBy:[SearchParameter getAllDealFilters] byValues:[NSArray arrayWithObjects:@(self.onlySearchDeal), nil]],
+            [self selectFilterItemsBy:[SearchParameter getAllRadiusFilters] byValues:[NSArray arrayWithObjects:@(self.radiusFilter), nil]],
+            [self selectFilterItemsBy:[SearchParameter getAllSortByFilters] byValues:[NSArray arrayWithObjects:@(self.sortBy), nil]],
+            [self selectFilterItemsBy:[SearchParameter getAllCategoryFilters] byValues:self.categoryFilters],
+            nil];
+}
+
+- (void)updateFilterValue: (NSArray *)filters {
+    
 }
 
 @end

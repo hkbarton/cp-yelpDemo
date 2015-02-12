@@ -13,11 +13,13 @@
 #import "UIImageView+AFNetworking.h"
 #import "SVProgressHUD.h"
 #import "RestaurantTableViewCell.h"
+#import "FilterViewController.h"
 
-@interface RestaurantsViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
+@interface RestaurantsViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, FilterViewControllerDelegate>
 
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) UIRefreshControl *tableRefreshControl;
+@property (nonatomic, strong) FilterViewController *filterViewControler;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -59,11 +61,14 @@ NSString *const TABLE_VIEW_CELL_ID = @"RestaurantTableViewCell";
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 99;
     
-    // init data
+    // filter view controller
+    self.filterViewControler = [[FilterViewController alloc] init];
+    self.filterViewControler.delegate = self;
+    
+    // init and load data
     self.businesses = [NSMutableArray array];
     self.searchParameter = [SearchParameter defaultParameter];
     self.hasNextPage = NO;
-    
     [self refreshView];
 }
 
@@ -72,7 +77,15 @@ NSString *const TABLE_VIEW_CELL_ID = @"RestaurantTableViewCell";
 }
 
 - (void)onFilterButtonClicked:(id)sender {
-    
+    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:self.filterViewControler];
+    nvc.navigationBar.barTintColor = [UIColor colorWithRed:184.0f/255.0f green:11.0f/255.0f blue:4.0f/255.0f alpha:1.0f];
+    self.filterViewControler.filters = self.searchParameter;
+    [self presentViewController:nvc animated:YES completion:nil];
+}
+
+- (void)filterViewController:(FilterViewController *) filterViewContorller didChangeFileters:(SearchParameter *)filters {
+    self.searchParameter = filters;
+    [self refreshView];
 }
 
 - (void)onMapButtonClicked:(id)sender {
@@ -109,21 +122,6 @@ NSString *const TABLE_VIEW_CELL_ID = @"RestaurantTableViewCell";
     [self reloadData];
 }
 
-- (void)loadImage:(__weak UIImageView *)imageView withURL:(NSString *)url {
-    NSURL *posterUrl = [NSURL URLWithString:url];
-    NSURLRequest *posterRequest = [NSURLRequest requestWithURL:posterUrl cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:3.0f];
-    [imageView setImageWithURLRequest:posterRequest placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-        imageView.image = image;
-        // Only animate image fade in when result come from network
-        if (response != nil) {
-            imageView.alpha = 0;
-            [UIView animateWithDuration:0.7f animations:^{
-                imageView.alpha = 1.0f;
-            }];
-        }
-    } failure:nil];
-}
-
 #pragma mark - Search Bar
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
@@ -153,14 +151,7 @@ NSString *const TABLE_VIEW_CELL_ID = @"RestaurantTableViewCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     RestaurantTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TABLE_VIEW_CELL_ID];
     
-    Business *business = self.businesses[indexPath.row];
-    [self loadImage:cell.imageBusiness withURL:business.imageUrl];
-    cell.labelName.text = business.name;
-    cell.labelDistance.text = [NSString stringWithFormat:@"%.02f mi", business.distance];
-    [cell.imageRating setImageWithURL:[NSURL URLWithString:business.ratingImageUrl]];
-    cell.labelReviewCount.text = [NSString stringWithFormat:@"%ld Reviews", business.numOfReviews];
-    cell.labelAddress.text = business.address;
-    cell.labelCategory.text = business.categories;
+    [cell setBusiness:self.businesses[indexPath.row]];
     
     if (indexPath.row >= self.businesses.count -1 && self.hasNextPage) {
         tableView.tableFooterView.hidden = NO;

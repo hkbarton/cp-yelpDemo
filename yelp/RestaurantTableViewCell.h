@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Business.h"
 
 @interface RestaurantTableViewCell : UITableViewCell
 
@@ -17,5 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelReviewCount;
 @property (weak, nonatomic) IBOutlet UILabel *labelAddress;
 @property (weak, nonatomic) IBOutlet UILabel *labelCategory;
+
+- (void)setBusiness: (Business *)business;
 
 @end

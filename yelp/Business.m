@@ -22,7 +22,10 @@ const float MilesPerMeter = 0.000621371;
         if (streetList.count > 0) {
             self.street = streetList[0];
         }
-        self.neighborhoods = [dictionary valueForKeyPath:@"location.neighborhoods"][0];
+        NSArray *neighborhoodList = [dictionary valueForKeyPath:@"location.neighborhoods"];
+        if (neighborhoodList.count > 0) {
+            self.neighborhoods = neighborhoodList[0];
+        }
         self.city = [dictionary valueForKeyPath:@"location.city"];
         self.address = [NSString stringWithFormat:@"%@, %@", self.street, self.neighborhoods];
         self.latitude = [[dictionary valueForKeyPath:@"location.coordinate.latitude"] floatValue];

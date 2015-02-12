@@ -10,4 +10,12 @@
 
 @interface RestaurantTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *imageBusiness;
+@property (weak, nonatomic) IBOutlet UILabel *labelName;
+@property (weak, nonatomic) IBOutlet UILabel *labelDistance;
+@property (weak, nonatomic) IBOutlet UIImageView *imageRating;
+@property (weak, nonatomic) IBOutlet UILabel *labelReviewCount;
+@property (weak, nonatomic) IBOutlet UILabel *labelAddress;
+@property (weak, nonatomic) IBOutlet UILabel *labelCategory;
+
 @end

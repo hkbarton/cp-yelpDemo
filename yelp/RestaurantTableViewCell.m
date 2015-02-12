@@ -11,7 +11,12 @@
 @implementation RestaurantTableViewCell
 
 - (void)awakeFromNib {
-    // Initialization code
+    self.labelName.preferredMaxLayoutWidth = self.labelName.frame.size.width;
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    self.labelName.preferredMaxLayoutWidth = self.labelName.frame.size.width;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

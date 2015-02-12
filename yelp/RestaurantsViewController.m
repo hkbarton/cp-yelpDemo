@@ -43,21 +43,21 @@ NSString *const TABLE_VIEW_CELL_ID = @"RestaurantTableViewCell";
     [self.navigationItem.rightBarButtonItem setTintColor:[UIColor whiteColor]];
     
     // init table view
+    [self.tableView registerNib:[UINib nibWithNibName:@"RestaurantTableViewCell" bundle:nil] forCellReuseIdentifier:TABLE_VIEW_CELL_ID];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    [self.tableView registerNib:[UINib nibWithNibName:@"RestaurantTableViewCell" bundle:nil] forCellReuseIdentifier:TABLE_VIEW_CELL_ID];
     self.tableRefreshControl = [[UIRefreshControl alloc] init];
     [self.tableRefreshControl addTarget:self action:@selector(reloadData) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.tableRefreshControl atIndex:0];
     UIView *tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 50)];
-    [tableFooterView setBackgroundColor: [UIColor redColor]];
     UIActivityIndicatorView *loadingView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [loadingView startAnimating];
     loadingView.center = tableFooterView.center;
-    //loadingView.frame = CGRectMake(tableFooterView.bounds.size.width/2 - loadingView.bounds.size.width/2, tableFooterView.bounds.size.height/2 - loadingView.bounds.size.height/2, loadingView.bounds.size.width, loadingView.bounds.size.height);
     [tableFooterView addSubview:loadingView];
     self.tableView.tableFooterView = tableFooterView;
     self.tableView.tableFooterView.hidden = YES;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 99;
     
     // init data
     self.businesses = [NSMutableArray array];
@@ -69,7 +69,6 @@ NSString *const TABLE_VIEW_CELL_ID = @"RestaurantTableViewCell";
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)onFilterButtonClicked:(id)sender {
@@ -110,6 +109,21 @@ NSString *const TABLE_VIEW_CELL_ID = @"RestaurantTableViewCell";
     [self reloadData];
 }
 
+- (void)loadImage:(__weak UIImageView *)imageView withURL:(NSString *)url {
+    NSURL *posterUrl = [NSURL URLWithString:url];
+    NSURLRequest *posterRequest = [NSURLRequest requestWithURL:posterUrl cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:3.0f];
+    [imageView setImageWithURLRequest:posterRequest placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+        imageView.image = image;
+        // Only animate image fade in when result come from network
+        if (response != nil) {
+            imageView.alpha = 0;
+            [UIView animateWithDuration:0.7f animations:^{
+                imageView.alpha = 1.0f;
+            }];
+        }
+    } failure:nil];
+}
+
 #pragma mark - Search Bar
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
@@ -139,22 +153,26 @@ NSString *const TABLE_VIEW_CELL_ID = @"RestaurantTableViewCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     RestaurantTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TABLE_VIEW_CELL_ID];
     
+    Business *business = self.businesses[indexPath.row];
+    [self loadImage:cell.imageBusiness withURL:business.imageUrl];
+    cell.labelName.text = business.name;
+    cell.labelDistance.text = [NSString stringWithFormat:@"%.02f mi", business.distance];
+    [cell.imageRating setImageWithURL:[NSURL URLWithString:business.ratingImageUrl]];
+    cell.labelReviewCount.text = [NSString stringWithFormat:@"%ld Reviews", business.numOfReviews];
+    cell.labelAddress.text = business.address;
+    cell.labelCategory.text = business.categories;
+    
     if (indexPath.row >= self.businesses.count -1 && self.hasNextPage) {
         tableView.tableFooterView.hidden = NO;
         [self.searchParameter nextPage];
         [self loadData];
     }
+    
     return cell;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-*/
 
 @end

@@ -13,7 +13,9 @@
 
 @protocol FilterTableViewCellDelegate <NSObject>
 
--(void)filterTableViewCell:(FilterTableViewCell *)filterTableViewCell didFilterValueChanged:(FilterItem *)item;
+-(void)filterTableViewCell:(FilterTableViewCell *)filterTableViewCell didSwitchFilterValueChanged:(FilterItem *)item;
+
+-(void)filterTableViewCell:(FilterTableViewCell *)filterTableViewCell didCheckFilterClicked:(FilterItem *)item withValueChanged:(BOOL)isValueChagned;
 
 @end
 
@@ -21,6 +23,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *labelFilterName;
 @property (weak, nonatomic) IBOutlet UISwitch *switchFilterValue;
+@property (weak, nonatomic) IBOutlet UIButton *checkFilterValue;
 @property (weak, nonatomic) id<FilterTableViewCellDelegate> delegate;
 
 -(void) setFilterItem: (FilterItem *)item;

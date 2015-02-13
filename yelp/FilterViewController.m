@@ -52,10 +52,15 @@
     self.filters = [self.filterParameter getAllFiltersByCurrentValue];
 }
 
--(void)filterTableViewCell:(FilterTableViewCell *)filterTableViewCell didFilterValueChanged:(FilterItem *)item{
+-(void)filterTableViewCell:(FilterTableViewCell *)filterTableViewCell didSwitchFilterValueChanged:(FilterItem *)item {
     [self.filterParameter updateFilterByFilterItem:item];
     self.filters = [self.filterParameter getAllFiltersByCurrentValue];
-    if (item.filterType == 1 || item.filterType == 2) {
+}
+
+-(void)filterTableViewCell:(FilterTableViewCell *)filterTableViewCell didCheckFilterClicked:(FilterItem *)item withValueChanged:(BOOL)isValueChagned {
+    if (isValueChagned) {
+        [self.filterParameter updateFilterByFilterItem:item];
+        self.filters = [self.filterParameter getAllFiltersByCurrentValue];
         [self.tableView reloadData];
     }
 }

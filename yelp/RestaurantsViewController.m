@@ -79,12 +79,12 @@ NSString *const TABLE_VIEW_CELL_ID = @"RestaurantTableViewCell";
 - (void)onFilterButtonClicked:(id)sender {
     UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:self.filterViewControler];
     nvc.navigationBar.barTintColor = [UIColor colorWithRed:184.0f/255.0f green:11.0f/255.0f blue:4.0f/255.0f alpha:1.0f];
-    self.filterViewControler.filters = self.searchParameter;
+    [self.filterViewControler setSearchParameter:self.searchParameter];
     [self presentViewController:nvc animated:YES completion:nil];
 }
 
-- (void)filterViewController:(FilterViewController *) filterViewContorller didChangeFileters:(SearchParameter *)filters {
-    self.searchParameter = filters;
+- (void)filterViewController:(FilterViewController *) filterViewContorller didChangeFileters:(SearchParameter *)param {
+    self.searchParameter = param;
     [self refreshView];
 }
 
@@ -119,6 +119,7 @@ NSString *const TABLE_VIEW_CELL_ID = @"RestaurantTableViewCell";
 
 - (void)refreshView {
     [SVProgressHUD show];
+    self.searchBar.text = self.searchParameter.term;
     [self reloadData];
 }
 

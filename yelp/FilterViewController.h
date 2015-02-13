@@ -13,13 +13,14 @@
 
 @protocol FilterViewControllerDelegate <NSObject>
 
-- (void)filterViewController:(FilterViewController *) filterViewContorller didChangeFileters:(SearchParameter *)filters;
+- (void)filterViewController:(FilterViewController *) filterViewContorller didChangeFileters:(SearchParameter *)param;
 
 @end
 
 @interface FilterViewController : UIViewController
 
-@property (nonatomic, weak) SearchParameter* filters;
 @property (nonatomic, weak) id<FilterViewControllerDelegate> delegate;
+
+- (void)setSearchParameter: (SearchParameter *) param;
 
 @end

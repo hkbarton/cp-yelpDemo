@@ -12,7 +12,32 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yi7-v0-3Tc">
+                        <rect key="frame" x="16" y="10" width="40" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YBC-LQ-wfF">
+                        <rect key="frame" x="255" y="6" width="51" height="31"/>
+                        <connections>
+                            <action selector="didSwitchValueChanged:" destination="KGk-i7-Jjw" eventType="valueChanged" id="Ftc-A9-b1v"/>
+                        </connections>
+                    </switch>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="YBC-LQ-wfF" firstAttribute="centerY" secondItem="yi7-v0-3Tc" secondAttribute="centerY" id="Ct9-7B-O2q"/>
+                    <constraint firstAttribute="trailing" secondItem="YBC-LQ-wfF" secondAttribute="trailing" constant="16" id="Ntd-Sn-fBf"/>
+                    <constraint firstItem="yi7-v0-3Tc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="OX8-MC-L7Y"/>
+                    <constraint firstAttribute="bottom" secondItem="yi7-v0-3Tc" secondAttribute="bottom" constant="10" id="VeV-Ap-Pmb"/>
+                    <constraint firstItem="yi7-v0-3Tc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="sAR-IR-Hyw"/>
+                </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="labelFilterName" destination="yi7-v0-3Tc" id="5aL-Aj-89T"/>
+                <outlet property="switchFilterValue" destination="YBC-LQ-wfF" id="Mfi-VQ-r02"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

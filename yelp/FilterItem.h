@@ -11,9 +11,10 @@
 @interface FilterItem : NSObject
 
 @property (nonatomic, strong) NSString *key;
+@property (nonatomic, assign) NSInteger filterType;
 @property (nonatomic, strong) id value;
 @property (nonatomic, assign) BOOL isSelected;
 
--(FilterItem *)initWith:(NSString *)key value:(id)value;
+-(FilterItem *)initWith:(NSString *)key value:(id)value filterType:(NSInteger)filterType;
 
 @end

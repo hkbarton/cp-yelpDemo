@@ -27,13 +27,10 @@
 - (void)nextPage;
 
 - (NSArray *)getAllFiltersByCurrentValue;
-- (void)updateFilterValue: (NSArray *)filters;
+- (void)updateFilterByFilterItem: (FilterItem *)filterItem;
 
 + (SearchParameter *) defaultParameter;
 
-+ (NSArray *)getAllDealFilters;
-+ (NSArray *)getAllSortByFilters;
-+ (NSArray *)getAllCategoryFilters;
-+ (NSArray *)getAllRadiusFilters;
++ (NSArray*) FilterTypeTitles;
 
 @end

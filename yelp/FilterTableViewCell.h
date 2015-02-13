@@ -7,7 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FilterItem.h"
+
+@class FilterTableViewCell;
+
+@protocol FilterTableViewCellDelegate <NSObject>
+
+-(void)filterTableViewCell:(FilterTableViewCell *)filterTableViewCell didFilterValueChanged:(FilterItem *)item;
+
+@end
 
 @interface FilterTableViewCell : UITableViewCell
+
+@property (weak, nonatomic) IBOutlet UILabel *labelFilterName;
+@property (weak, nonatomic) IBOutlet UISwitch *switchFilterValue;
+@property (weak, nonatomic) id<FilterTableViewCellDelegate> delegate;
+
+-(void) setFilterItem: (FilterItem *)item;
 
 @end

@@ -8,16 +8,33 @@
 
 #import "FilterTableViewCell.h"
 
+@interface FilterTableViewCell ()
+
+@property (weak, nonatomic) FilterItem *item;
+
+@end
+
 @implementation FilterTableViewCell
 
 - (void)awakeFromNib {
-    // Initialization code
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
+}
 
-    // Configure the view for the selected state
+-(void) setFilterItem: (FilterItem *)item{
+    self.item = item;
+    self.labelFilterName.text = item.key;
+    self.switchFilterValue.on = item.isSelected;
+}
+
+- (IBAction)didSwitchValueChanged:(id)sender {
+    self.item.isSelected = self.switchFilterValue.on;
+    if (self.delegate) {
+        [self.delegate filterTableViewCell:self didFilterValueChanged:self.item];
+    }
 }
 
 @end

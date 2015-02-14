@@ -20,6 +20,7 @@
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     self.switchFilterValue.hidden = YES;
     self.checkFilterValue.hidden = YES;
+    self.imageExpand.hidden = YES;
     [self.checkFilterValue setImage:[UIImage imageNamed:@"UnCheck"] forState:UIControlStateNormal];
     [self.checkFilterValue setImage:[UIImage imageNamed:@"Check"] forState:UIControlStateSelected];
 }
@@ -31,14 +32,21 @@
 -(void) setFilterItem: (FilterItem *)item{
     self.item = item;
     self.labelFilterName.text = item.key;
-    if (item.filterType == 1 || item.filterType == 2) {
+    if (item.isCollapsed) {
+        self.imageExpand.hidden = NO;
         self.switchFilterValue.hidden = YES;
-        self.checkFilterValue.hidden = NO;
-        self.checkFilterValue.selected = item.isSelected;
-    } else {
-        self.switchFilterValue.hidden = NO;
         self.checkFilterValue.hidden = YES;
-        self.switchFilterValue.on = item.isSelected;
+    } else {
+        self.imageExpand.hidden = YES;
+        if (item.filterType == 1 || item.filterType == 2) {
+            self.switchFilterValue.hidden = YES;
+            self.checkFilterValue.hidden = NO;
+            self.checkFilterValue.selected = item.isSelected;
+        } else {
+            self.switchFilterValue.hidden = NO;
+            self.checkFilterValue.hidden = YES;
+            self.switchFilterValue.on = item.isSelected;
+        }
     }
 }
 

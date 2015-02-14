@@ -18,6 +18,8 @@
 		071F41591A89DF0A000A06E3 /* RestaurantsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 071F41571A89DF0A000A06E3 /* RestaurantsViewController.xib */; };
 		071F415F1A89DF84000A06E3 /* YelpService.m in Sources */ = {isa = PBXBuildFile; fileRef = 071F415E1A89DF84000A06E3 /* YelpService.m */; };
 		07271CDE1A8D1699006545D3 /* FilterItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 07271CDD1A8D1699006545D3 /* FilterItem.m */; };
+		0734856E1A8F1E290077ACEE /* CollapseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0734856C1A8F1E290077ACEE /* CollapseTableViewCell.m */; };
+		0734856F1A8F1E290077ACEE /* CollapseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0734856D1A8F1E290077ACEE /* CollapseTableViewCell.xib */; };
 		07AB57B21A8B174E00E1E74E /* RestaurantTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 07AB57B01A8B174E00E1E74E /* RestaurantTableViewCell.m */; };
 		07AB57B31A8B174E00E1E74E /* RestaurantTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07AB57B11A8B174E00E1E74E /* RestaurantTableViewCell.xib */; };
 		07AB57B71A8B177500E1E74E /* FilterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 07AB57B51A8B177500E1E74E /* FilterTableViewCell.m */; };
@@ -58,6 +60,9 @@
 		071F415E1A89DF84000A06E3 /* YelpService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpService.m; sourceTree = "<group>"; };
 		07271CDC1A8D1699006545D3 /* FilterItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterItem.h; sourceTree = "<group>"; };
 		07271CDD1A8D1699006545D3 /* FilterItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterItem.m; sourceTree = "<group>"; };
+		0734856B1A8F1E290077ACEE /* CollapseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollapseTableViewCell.h; sourceTree = "<group>"; };
+		0734856C1A8F1E290077ACEE /* CollapseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollapseTableViewCell.m; sourceTree = "<group>"; };
+		0734856D1A8F1E290077ACEE /* CollapseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollapseTableViewCell.xib; sourceTree = "<group>"; };
 		07AB57AF1A8B174E00E1E74E /* RestaurantTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantTableViewCell.h; sourceTree = "<group>"; };
 		07AB57B01A8B174E00E1E74E /* RestaurantTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantTableViewCell.m; sourceTree = "<group>"; };
 		07AB57B11A8B174E00E1E74E /* RestaurantTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RestaurantTableViewCell.xib; sourceTree = "<group>"; };
@@ -176,6 +181,9 @@
 				07AB57B41A8B177500E1E74E /* FilterTableViewCell.h */,
 				07AB57B51A8B177500E1E74E /* FilterTableViewCell.m */,
 				07AB57B61A8B177500E1E74E /* FilterTableViewCell.xib */,
+				0734856B1A8F1E290077ACEE /* CollapseTableViewCell.h */,
+				0734856C1A8F1E290077ACEE /* CollapseTableViewCell.m */,
+				0734856D1A8F1E290077ACEE /* CollapseTableViewCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -306,6 +314,7 @@
 				071F413D1A89DE9B000A06E3 /* Images.xcassets in Resources */,
 				07AB57B31A8B174E00E1E74E /* RestaurantTableViewCell.xib in Resources */,
 				0715BED51A8A823800E87D97 /* FilterViewController.xib in Resources */,
+				0734856F1A8F1E290077ACEE /* CollapseTableViewCell.xib in Resources */,
 				071F41591A89DF0A000A06E3 /* RestaurantsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -366,6 +375,7 @@
 				0715BED41A8A823800E87D97 /* FilterViewController.m in Sources */,
 				07AB57B71A8B177500E1E74E /* FilterTableViewCell.m in Sources */,
 				071F41321A89DE9B000A06E3 /* main.m in Sources */,
+				0734856E1A8F1E290077ACEE /* CollapseTableViewCell.m in Sources */,
 				071F415F1A89DF84000A06E3 /* YelpService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

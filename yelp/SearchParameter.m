@@ -18,7 +18,7 @@ static NSArray *filterTypeTitles, *filterDefaultValue, *dealFilters, *sortByFilt
 
 + (NSArray*) FilterTypeTitles {
     if (filterTypeTitles==nil) {
-        filterTypeTitles = [NSArray arrayWithObjects:@"Deal", @"Distance", @"Sort by", @"General Features", nil];
+        filterTypeTitles = [NSArray arrayWithObjects:@"Deal", @"Distance", @"Sort by", @"Categories", nil];
     }
     return filterTypeTitles;
 }
@@ -42,7 +42,7 @@ static NSArray *filterTypeTitles, *filterDefaultValue, *dealFilters, *sortByFilt
 + (NSArray *)getAllRadiusFilters {
     if (radiusFilters == nil) {
         radiusFilters = [[NSArray alloc] initWithObjects:
-                           [[FilterItem alloc] initWith:@"Best Match" value:@(0.0f) filterType:1],
+                           [[FilterItem alloc] initWith:@"Auto" value:@(0.0f) filterType:1],
                            [[FilterItem alloc] initWith:@"0.3 miles" value:@(0.3f) filterType:1],
                            [[FilterItem alloc] initWith:@"1 mile" value:@(1.0f) filterType:1],
                            [[FilterItem alloc] initWith:@"5 miles" value:@(5.0f) filterType:1],

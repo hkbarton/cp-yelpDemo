@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelFilterName;
 @property (weak, nonatomic) IBOutlet UISwitch *switchFilterValue;
 @property (weak, nonatomic) IBOutlet UIButton *checkFilterValue;
+@property (weak, nonatomic) IBOutlet UIImageView *imageExpand;
 @property (weak, nonatomic) id<FilterTableViewCellDelegate> delegate;
 
 -(void) setFilterItem: (FilterItem *)item;

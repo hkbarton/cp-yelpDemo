@@ -18,6 +18,7 @@ static NSArray* filterTypeTitles = nil;
         self.value = value;
         self.isSelected = NO;
         self.filterType = filterType;
+        self.isCollapsed = NO;
     }
     return self;
 }

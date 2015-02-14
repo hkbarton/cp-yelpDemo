@@ -15,6 +15,8 @@
 @property (nonatomic, strong) id value;
 @property (nonatomic, assign) BOOL isSelected;
 
+@property (nonatomic, assign) BOOL isCollapsed;
+
 -(FilterItem *)initWith:(NSString *)key value:(id)value filterType:(NSInteger)filterType;
 
 @end

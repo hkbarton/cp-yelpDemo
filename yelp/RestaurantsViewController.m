@@ -20,6 +20,8 @@
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) UIRefreshControl *tableRefreshControl;
 @property (nonatomic, strong) FilterViewController *filterViewControler;
+@property (nonatomic, strong) UIView *tableFooterView;
+@property (nonatomic, strong) UIActivityIndicatorView *infiniteLoadingView;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -51,13 +53,13 @@ NSString *const TABLE_VIEW_CELL_ID = @"RestaurantTableViewCell";
     self.tableRefreshControl = [[UIRefreshControl alloc] init];
     [self.tableRefreshControl addTarget:self action:@selector(reloadData) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.tableRefreshControl atIndex:0];
-    UIView *tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 50)];
-    UIActivityIndicatorView *loadingView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    [loadingView startAnimating];
-    loadingView.center = tableFooterView.center;
-    [tableFooterView addSubview:loadingView];
-    self.tableView.tableFooterView = tableFooterView;
-    self.tableView.tableFooterView.hidden = YES;
+    
+    self.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 50)];
+    self.infiniteLoadingView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [self.infiniteLoadingView startAnimating];
+    [self.tableFooterView addSubview:self.infiniteLoadingView];
+    self.tableView.tableFooterView = self.tableFooterView;
+    
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 99;
     
@@ -105,6 +107,8 @@ NSString *const TABLE_VIEW_CELL_ID = @"RestaurantTableViewCell";
         self.hasNextPage = data.count == self.searchParameter.pageCount ? YES : NO;
         if (!self.hasNextPage) {
             self.tableView.tableFooterView.hidden = YES;
+        } else {
+            self.tableView.tableFooterView.hidden = NO;
         }
         [self.businesses addObjectsFromArray:data];
         [self.tableView reloadData];
@@ -119,6 +123,7 @@ NSString *const TABLE_VIEW_CELL_ID = @"RestaurantTableViewCell";
 
 - (void)refreshView {
     [SVProgressHUD show];
+    self.tableView.tableFooterView.hidden = YES;
     self.searchBar.text = self.searchParameter.term;
     [self reloadData];
 }
@@ -126,8 +131,9 @@ NSString *const TABLE_VIEW_CELL_ID = @"RestaurantTableViewCell";
 #pragma mark - Search Bar
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    // do search
     [searchBar resignFirstResponder];
+    self.searchParameter.term = searchBar.text;
+    [self refreshView];
 }
 
 #pragma mark - Table View
@@ -155,7 +161,12 @@ NSString *const TABLE_VIEW_CELL_ID = @"RestaurantTableViewCell";
     [cell setBusiness:self.businesses[indexPath.row]];
     
     if (indexPath.row >= self.businesses.count -1 && self.hasNextPage) {
-        tableView.tableFooterView.hidden = NO;
+        CGRect frame = self.tableFooterView.frame;
+        frame.size.width = tableView.bounds.size.width;
+        self.tableFooterView.frame = frame;
+        CGPoint center = self.infiniteLoadingView.center;
+        center.x = self.tableFooterView.center.x;
+        self.infiniteLoadingView.center = center;
         [self.searchParameter nextPage];
         [self loadData];
     }

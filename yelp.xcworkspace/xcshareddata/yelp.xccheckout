@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>3231EA26-3E67-4AFD-820C-A9BD31B5AB22</string>
+	<key>IDESourceControlProjectName</key>
+	<string>yelp</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>8C0876FF534355A04D0CE206E8C5536F103D14EE</key>
+		<string>github.com:hkbarton/cp-yelpDemo.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>yelp.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>8C0876FF534355A04D0CE206E8C5536F103D14EE</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:hkbarton/cp-yelpDemo.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>8C0876FF534355A04D0CE206E8C5536F103D14EE</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8C0876FF534355A04D0CE206E8C5536F103D14EE</string>
+			<key>IDESourceControlWCCName</key>
+			<string>yelp</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -42,6 +42,13 @@ const float MilesPerMeter = 0.000621371;
     return self;
 }
 
+-(CLLocationCoordinate2D)coordinate {
+    CLLocationCoordinate2D result;
+    result.latitude = self.latitude;
+    result.longitude = self.longitude;
+    return result;
+}
+
 + (NSArray *)businessesWithDictionaries: (NSArray *)dictinoaries {
     NSMutableArray *businesses = [NSMutableArray array];
     for (NSDictionary *dictionary in dictinoaries) {

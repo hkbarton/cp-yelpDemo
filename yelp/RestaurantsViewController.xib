@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RestaurantsViewController">
             <connections>
+                <outlet property="mapView" destination="sx5-Vi-XM9" id="jfd-qH-NK2"/>
                 <outlet property="tableView" destination="PPp-Or-eR6" id="Hfb-cL-RTF"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -19,12 +20,19 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="sx5-Vi-XM9">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                </mapView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="PPp-Or-eR6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="1Yz-52-Zq1"/>
+                <constraint firstAttribute="trailing" secondItem="sx5-Vi-XM9" secondAttribute="trailing" id="Bm7-2I-le5"/>
+                <constraint firstItem="sx5-Vi-XM9" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Gbb-AK-KmF"/>
                 <constraint firstAttribute="bottom" secondItem="PPp-Or-eR6" secondAttribute="bottom" id="Nio-a0-O1o"/>
+                <constraint firstItem="sx5-Vi-XM9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="YpQ-Kf-D2B"/>
                 <constraint firstItem="PPp-Or-eR6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="doP-xm-aZG"/>
+                <constraint firstAttribute="bottom" secondItem="sx5-Vi-XM9" secondAttribute="bottom" id="ezB-JC-5Jl"/>
                 <constraint firstAttribute="trailing" secondItem="PPp-Or-eR6" secondAttribute="trailing" id="fHx-5G-lO8"/>
             </constraints>
             <point key="canvasLocation" x="140" y="154"/>

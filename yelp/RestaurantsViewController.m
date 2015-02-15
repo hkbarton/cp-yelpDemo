@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Ke Huang. All rights reserved.
 //
 
+#import <MapKit/MapKit.h>
 #import "RestaurantsViewController.h"
 #import "YelpService.h"
 #import "SearchParameter.h"
@@ -14,8 +15,13 @@
 #import "SVProgressHUD.h"
 #import "RestaurantTableViewCell.h"
 #import "FilterViewController.h"
+#import "MapAnnotationDetailView.h"
 
-@interface RestaurantsViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, FilterViewControllerDelegate>
+typedef enum{
+    TYPE_TableView, TYPE_MapView
+} ViewType;
+
+@interface RestaurantsViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, FilterViewControllerDelegate, MKMapViewDelegate>
 
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) UIRefreshControl *tableRefreshControl;
@@ -24,10 +30,12 @@
 @property (nonatomic, strong) UIActivityIndicatorView *infiniteLoadingView;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 @property (nonatomic, strong) SearchParameter *searchParameter;
 @property (nonatomic, strong) NSMutableArray *businesses;
 @property (nonatomic, assign) BOOL hasNextPage;
+@property (nonatomic, assign) ViewType viewType;
 
 @end
 
@@ -37,6 +45,9 @@ NSString *const TABLE_VIEW_CELL_ID = @"RestaurantTableViewCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.viewType = TYPE_TableView;
+    self.tableView.hidden = NO;
+    self.mapView.hidden = YES;
     // setup navigation bar
     self.searchBar = [[UISearchBar alloc] init];
     self.searchBar.delegate = self;
@@ -62,6 +73,9 @@ NSString *const TABLE_VIEW_CELL_ID = @"RestaurantTableViewCell";
     
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 99;
+    
+    // init map view
+    self.mapView.delegate = self;
     
     // filter view controller
     self.filterViewControler = [[FilterViewController alloc] init];
@@ -91,10 +105,34 @@ NSString *const TABLE_VIEW_CELL_ID = @"RestaurantTableViewCell";
 }
 
 - (void)onMapButtonClicked:(id)sender {
-    
+    if (self.viewType == TYPE_TableView) {
+        self.viewType = TYPE_MapView;
+        self.navigationItem.rightBarButtonItem.title = @"List";
+        [UIView transitionFromView:self.tableView toView:self.mapView duration:1.0f options:UIViewAnimationOptionTransitionFlipFromRight + UIViewAnimationOptionShowHideTransitionViews completion:nil];
+    } else if (self.viewType == TYPE_MapView) {
+        self.viewType = TYPE_TableView;
+        self.navigationItem.rightBarButtonItem.title = @"Map";
+        [UIView transitionFromView:self.mapView toView:self.tableView duration:1.0f options:UIViewAnimationOptionTransitionFlipFromLeft + UIViewAnimationOptionShowHideTransitionViews completion:nil];
+    }
 }
 
 #pragma mark - Util
+
+- (void)resetMapView {
+    // setup map by search parameter
+    MKCoordinateRegion mapRegion;
+    CLLocationCoordinate2D mapCenter;
+    mapCenter.latitude = self.searchParameter.latitude;
+    mapCenter.longitude = self.searchParameter.longitude;
+    mapRegion.center = mapCenter;
+    MKCoordinateSpan mapSpan;
+    mapSpan.latitudeDelta = 0.02; // 1 degree = 111 km ~= 69 mile
+    mapSpan.longitudeDelta = 0.02;
+    mapRegion.span = mapSpan;
+    self.mapView.region = mapRegion;
+    // clear annotation
+    [self.mapView removeAnnotations:self.mapView.annotations];
+}
 
 - (void)loadData {
     [[YelpService defaultService] searchBusiness:self.searchParameter withCallback:^(NSArray *data, NSError *err) {
@@ -112,12 +150,14 @@ NSString *const TABLE_VIEW_CELL_ID = @"RestaurantTableViewCell";
         }
         [self.businesses addObjectsFromArray:data];
         [self.tableView reloadData];
+        [self.mapView addAnnotations:data];
     }];
 }
 
 - (void)reloadData {
     [self.businesses removeAllObjects];
     [self.searchParameter resetPagingParameter];
+    [self resetMapView];
     [self loadData];
 }
 
@@ -176,6 +216,27 @@ NSString *const TABLE_VIEW_CELL_ID = @"RestaurantTableViewCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark - Map View
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    return nil;
+}
+
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
+    MapAnnotationDetailView *detailView = [[[NSBundle mainBundle] loadNibNamed:@"MapAnnotationDetailView" owner:self options:nil] objectAtIndex:0];
+    [detailView setBusiness:view.annotation withPinFrame:view.frame];
+    [view addSubview:detailView];
+    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        [detailView updateFrameAndBound];
+    } completion:nil];
+}
+
+- (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {
+    if (view.subviews.count > 0 && [view.subviews[0] isKindOfClass:[MapAnnotationDetailView class]]){
+        [view.subviews[0] removeFromSuperview];
+    }
 }
 
 @end

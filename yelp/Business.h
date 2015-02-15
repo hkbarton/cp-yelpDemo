@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
-@interface Business : NSObject
+@interface Business : NSObject<MKAnnotation>
 
 @property (nonatomic, strong) NSString *imageUrl;
 @property (nonatomic, strong) NSString *name;

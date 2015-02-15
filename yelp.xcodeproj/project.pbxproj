@@ -20,6 +20,9 @@
 		07271CDE1A8D1699006545D3 /* FilterItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 07271CDD1A8D1699006545D3 /* FilterItem.m */; };
 		0734856E1A8F1E290077ACEE /* CollapseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0734856C1A8F1E290077ACEE /* CollapseTableViewCell.m */; };
 		0734856F1A8F1E290077ACEE /* CollapseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0734856D1A8F1E290077ACEE /* CollapseTableViewCell.xib */; };
+		07660BB31A8FDD2200F05B49 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07660BB21A8FDD2200F05B49 /* MapKit.framework */; };
+		07660BB61A90040A00F05B49 /* MapAnnotationDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07660BB51A90040A00F05B49 /* MapAnnotationDetailView.m */; };
+		07660BB81A90043300F05B49 /* MapAnnotationDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07660BB71A90043300F05B49 /* MapAnnotationDetailView.xib */; };
 		07AB57B21A8B174E00E1E74E /* RestaurantTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 07AB57B01A8B174E00E1E74E /* RestaurantTableViewCell.m */; };
 		07AB57B31A8B174E00E1E74E /* RestaurantTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07AB57B11A8B174E00E1E74E /* RestaurantTableViewCell.xib */; };
 		07AB57B71A8B177500E1E74E /* FilterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 07AB57B51A8B177500E1E74E /* FilterTableViewCell.m */; };
@@ -63,6 +66,10 @@
 		0734856B1A8F1E290077ACEE /* CollapseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollapseTableViewCell.h; sourceTree = "<group>"; };
 		0734856C1A8F1E290077ACEE /* CollapseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollapseTableViewCell.m; sourceTree = "<group>"; };
 		0734856D1A8F1E290077ACEE /* CollapseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollapseTableViewCell.xib; sourceTree = "<group>"; };
+		07660BB21A8FDD2200F05B49 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		07660BB41A90040A00F05B49 /* MapAnnotationDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapAnnotationDetailView.h; sourceTree = "<group>"; };
+		07660BB51A90040A00F05B49 /* MapAnnotationDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapAnnotationDetailView.m; sourceTree = "<group>"; };
+		07660BB71A90043300F05B49 /* MapAnnotationDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapAnnotationDetailView.xib; sourceTree = "<group>"; };
 		07AB57AF1A8B174E00E1E74E /* RestaurantTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantTableViewCell.h; sourceTree = "<group>"; };
 		07AB57B01A8B174E00E1E74E /* RestaurantTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantTableViewCell.m; sourceTree = "<group>"; };
 		07AB57B11A8B174E00E1E74E /* RestaurantTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RestaurantTableViewCell.xib; sourceTree = "<group>"; };
@@ -83,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07660BB31A8FDD2200F05B49 /* MapKit.framework in Frameworks */,
 				43CEE3BA40E2E5445065EB88 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -184,6 +192,9 @@
 				0734856B1A8F1E290077ACEE /* CollapseTableViewCell.h */,
 				0734856C1A8F1E290077ACEE /* CollapseTableViewCell.m */,
 				0734856D1A8F1E290077ACEE /* CollapseTableViewCell.xib */,
+				07660BB41A90040A00F05B49 /* MapAnnotationDetailView.h */,
+				07660BB51A90040A00F05B49 /* MapAnnotationDetailView.m */,
+				07660BB71A90043300F05B49 /* MapAnnotationDetailView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -213,6 +224,7 @@
 		293C01C8A39C3402D0EC3466 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				07660BB21A8FDD2200F05B49 /* MapKit.framework */,
 				E23086544908F1F39692F2B1 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -312,6 +324,7 @@
 				071F41401A89DE9B000A06E3 /* LaunchScreen.xib in Resources */,
 				07AB57B81A8B177500E1E74E /* FilterTableViewCell.xib in Resources */,
 				071F413D1A89DE9B000A06E3 /* Images.xcassets in Resources */,
+				07660BB81A90043300F05B49 /* MapAnnotationDetailView.xib in Resources */,
 				07AB57B31A8B174E00E1E74E /* RestaurantTableViewCell.xib in Resources */,
 				0715BED51A8A823800E87D97 /* FilterViewController.xib in Resources */,
 				0734856F1A8F1E290077ACEE /* CollapseTableViewCell.xib in Resources */,
@@ -373,6 +386,7 @@
 				071F41351A89DE9B000A06E3 /* AppDelegate.m in Sources */,
 				07AB57B21A8B174E00E1E74E /* RestaurantTableViewCell.m in Sources */,
 				0715BED41A8A823800E87D97 /* FilterViewController.m in Sources */,
+				07660BB61A90040A00F05B49 /* MapAnnotationDetailView.m in Sources */,
 				07AB57B71A8B177500E1E74E /* FilterTableViewCell.m in Sources */,
 				071F41321A89DE9B000A06E3 /* main.m in Sources */,
 				0734856E1A8F1E290077ACEE /* CollapseTableViewCell.m in Sources */,

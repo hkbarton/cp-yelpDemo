@@ -42,6 +42,7 @@ typedef enum{
 @implementation RestaurantsViewController
 
 NSString *const TABLE_VIEW_CELL_ID = @"RestaurantTableViewCell";
+NSString * const AID = @"BusinessAnnotation";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -221,7 +222,15 @@ NSString *const TABLE_VIEW_CELL_ID = @"RestaurantTableViewCell";
 #pragma mark - Map View
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
-    return nil;
+    MKAnnotationView* annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:AID];
+    if (annotationView) {
+        annotationView.annotation = annotation;
+    } else {
+        annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:AID];
+    }
+    annotationView.canShowCallout = NO;
+    annotationView.image = [UIImage imageNamed:@"MapPin"];
+    return annotationView;
 }
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
